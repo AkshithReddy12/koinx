@@ -34,10 +34,11 @@ const saveCryptoData = async (data) => {
 };
 
 // fetches data every 2 hours
-cron.schedule('* * * * *', async () => {
+cron.schedule('0 */2 * * *', async () => {
   console.log('Fetching cryptocurrency data...');
   const data = await fetchCryptoData();
   if (data) {
     saveCryptoData(data);
   }
 });
+
